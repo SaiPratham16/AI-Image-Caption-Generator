@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Caption Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-image"></i>
+                    <span>AI Caption Generator</span>
+                </div>
+                <div class="header-info">
+                    <span class="status-indicator online">
+                        <i class="fas fa-circle"></i> Model Ready
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Generate Intelligent Image Captions</h1>
+                    <p>Upload an image and let our AI model generate a descriptive caption using advanced deep learning techniques.</p>
+                </div>
+            </section>
+
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-content">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3>Drop your image here</h3>
+                            <p>or click to browse</p>
+                            <p class="upload-info">Supported formats: PNG, JPG, JPEG (Max 16MB)</p>
+                            <input type="file" id="fileInput" accept="image/png,image/jpeg,image/jpg" hidden>
+                            <button class="btn btn-primary" id="browseBtn">
+                                <i class="fas fa-folder-open"></i> Browse Files
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="loading-container" id="loadingContainer" style="display: none;">
+                        <div class="loading-spinner"></div>
+                        <h3>Processing Image...</h3>
+                        <p>Extracting features and generating caption</p>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div class="results-container" id="resultsContainer" style="display: none;">
+                        <div class="image-preview">
+                            <img id="previewImage" src="" alt="Uploaded image">
+                        </div>
+                        <div class="caption-section">
+                            <h3>Generated Caption</h3>
+                            <div class="caption-box">
+                                <p id="generatedCaption"></p>
+                                <button class="btn btn-copy" id="copyBtn">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary" id="newImageBtn">
+                                <i class="fas fa-plus"></i> Upload New Image
+                            </button>
+                            <button class="btn btn-primary" id="regenerateBtn">
+                                <i class="fas fa-redo"></i> Regenerate Caption
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features-section">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Deep Learning</h4>
+                        <p>Powered by ResNet50 and LSTM neural networks for accurate image understanding</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Fast Processing</h4>
+                        <p>Generate captions in seconds with optimized feature extraction</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Secure Upload</h4>
+                        <p>Your images are processed securely and temporarily stored</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 AI Image Caption Generator. Built with Flask, TensorFlow, and modern web technologies.</p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
